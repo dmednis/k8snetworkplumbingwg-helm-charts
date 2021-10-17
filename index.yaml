@@ -1,0 +1,57 @@
+apiVersion: v1
+entries:
+  multus:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-10-17T18:28:54.433734764Z"
+    description: Multus Helm chart for Kubernetes
+    digest: 5fac18b5440032698e88654f68d71d1e982598494b9849fe8d4f55e1197a0602
+    home: https://github.com/intel/multus-cni
+    icon: https://raw.githubusercontent.com/intel/multus-cni/master/doc/images/Multus.png
+    maintainers:
+    - name: k8snetworkplumbingwg
+      url: https://github.com/k8snetworkplumbingwg
+    name: multus
+    sources:
+    - https://github.com/intel/multus-cni
+    type: application
+    urls:
+    - https://github.com/dmednis/k8snetworkplumbingwg-helm-charts/releases/download/multus-0.1.2/multus-0.1.2.tgz
+    version: 0.1.2
+  sriov:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-10-17T18:28:54.548026672Z"
+    dependencies:
+    - name: multus
+      repository: file://../multus
+      version: 0.1.2
+    description: SR-IOV CNI Helm chart for Kubernetes
+    digest: 98d7134f751675ad6c2e8ca6bc0d2c22d0a6d221fc68d2b0b8b48df18a3ca9d9
+    home: https://github.com/intel/sriov-network-device-plugin
+    maintainers:
+    - name: k8snetworkplumbingwg
+      url: https://github.com/k8snetworkplumbingwg
+    name: sriov
+    sources:
+    - https://github.com/intel/sriov-network-device-plugin
+    - https://github.com/intel/sriov-cni
+    type: application
+    urls:
+    - https://github.com/dmednis/k8snetworkplumbingwg-helm-charts/releases/download/sriov-0.1.1/sriov-0.1.1.tgz
+    version: 0.1.1
+  whereabouts:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-10-17T18:28:54.667108485Z"
+    description: A Helm chart for Kubernetes
+    digest: a52a0db4d0db285a844154585fbd96f2146784e99d2d379fdab49510378e8998
+    maintainers:
+    - name: k8snetworkplumbingwg
+      url: https://github.com/k8snetworkplumbingwg
+    name: whereabouts
+    type: application
+    urls:
+    - https://github.com/dmednis/k8snetworkplumbingwg-helm-charts/releases/download/whereabouts-0.1.1/whereabouts-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-10-17T18:28:54.667114385Z"
