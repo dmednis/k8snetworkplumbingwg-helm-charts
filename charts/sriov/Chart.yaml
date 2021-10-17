@@ -24,3 +24,7 @@ maintainers:
   - name: k8snetworkplumbingwg
     url: https://github.com/k8snetworkplumbingwg
 appVersion: 0.1.0
+dependencies:
+  - name: multus
+    version: 0.1.2
+    repository: file://../multus
