@@ -21,6 +21,10 @@ sources:
   - https://github.com/intel/sriov-network-device-plugin
   - https://github.com/intel/sriov-cni
 maintainers:
-  - name: Network Plumbing Group
+  - name: k8snetworkplumbingwg
+    url: https://github.com/k8snetworkplumbingwg
 appVersion: 0.1.0
-
+dependencies:
+  - name: multus
+    version: 0.1.2
+    repository: file://../multus
