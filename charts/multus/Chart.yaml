@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 apiVersion: v2
-name: sriov
-description: SR-IOV CNI Helm chart for Kubernetes
+name: multus
+description: Multus Helm chart for Kubernetes
 type: application
-version: 0.1.1
-home: https://github.com/intel/sriov-network-device-plugin
+version: 0.2.1
+home: https://github.com/intel/multus-cni
+icon: https://raw.githubusercontent.com/intel/multus-cni/master/doc/images/Multus.png
 sources:
-  - https://github.com/intel/sriov-network-device-plugin
-  - https://github.com/intel/sriov-cni
+  - https://github.com/intel/multus-cni
 maintainers:
-  - name: Network Plumbing Group
-appVersion: 0.1.0
-
+  - name: k8snetworkplumbingwg
+    url: https://github.com/k8snetworkplumbingwg
+appVersion: 3.8.1
