@@ -3,6 +3,23 @@ entries:
   multus:
   - apiVersion: v2
     appVersion: 3.8.1
+    created: "2021-10-20T09:53:41.78549451Z"
+    description: Multus Helm chart for Kubernetes
+    digest: 57f56e4cb9e67318a2d9c2878f8b294371024a632d8537678f93b04b78a9c6dd
+    home: https://github.com/intel/multus-cni
+    icon: https://raw.githubusercontent.com/intel/multus-cni/master/doc/images/Multus.png
+    maintainers:
+    - name: k8snetworkplumbingwg
+      url: https://github.com/k8snetworkplumbingwg
+    name: multus
+    sources:
+    - https://github.com/intel/multus-cni
+    type: application
+    urls:
+    - https://github.com/dmednis/k8snetworkplumbingwg-helm-charts/releases/download/multus-0.2.1/multus-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 3.8.1
     created: "2021-10-20T09:45:18.346483227Z"
     description: Multus Helm chart for Kubernetes
     digest: c424da9421e2a2baa3356d579868d2ebc0f0707f0b44ee8d3ba4f4b498bfb57f
@@ -71,4 +88,4 @@ entries:
     urls:
     - https://github.com/dmednis/k8snetworkplumbingwg-helm-charts/releases/download/whereabouts-0.1.1/whereabouts-0.1.1.tgz
     version: 0.1.1
-generated: "2021-10-20T09:45:18.346492028Z"
+generated: "2021-10-20T09:53:41.78550781Z"
