@@ -16,64 +16,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-#replicaCount: 1
-
 image:
   repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-  tag: v3.8
+  tag: v3.8.1
   pullPolicy: IfNotPresent
 
-#imagePullSecrets: []
-#nameOverride: ""
-#fullnameOverride: ""
-
 serviceAccount:
-  # Specifies whether a service account should be created
-  #create: true
-  # Annotations to add to the service account
-  #annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: multus
 
 pod:
   resources:
-    enabled: false
     multus:
       requests:
-        memory: "128Mi"
-        cpu: "250m"
+        cpu: "100m"
+        memory: "50Mi"
       limits:
-        memory: "1024Mi"
-        cpu: "2000m"
-
-#podSecurityContext: {}
-  # fsGroup: 2000
-
-#securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
-#service:
-  #type: ClusterIP
-  #port: 80
-
-#ingress:
-  #enabled: false
-  #annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  #hosts:
-    #- host: chart-example.local
-    #  paths: []
-  #tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+        cpu: "100m"
+        memory: "50Mi"
 
 labels:
   nodeSelector: 
@@ -83,21 +42,21 @@ config:
   cni_conf:
     name: multus-cni-network
     type: multus
-    kubeconfig: /etc/cni/net.d/multus.d/multus.kubeconfig
-    cniVersion: 0.3.1
-    confDir: /etc/cni/net.d
-    cniDir: /var/lib/cni/multus
-    binDir: /opt/cni/bin
-    logFile: /var/log/multus.log
-    logLevel: panic
     capabilities:
       portMappings: true
-    readinessindicatorfile: ""
-    namespaceIsolation: false
-    clusterNetwork: k8s-pod-network
-    defaultNetwork: []
-    delegates: []
-    systemNamespaces: ["kube-system"]
+    delegates: 
+      - cniVersion: "0.3.1"
+        name: "default-cni-network"
+        plugins: 
+          - type: "flannel"
+            name: "flannel.1"
+            delegate:
+              isDefaultGateway: true
+              hairpinMode: true
+          - type: "portmap"
+            capabilities:
+              portMappings: true
+    kubeconfig: /etc/cni/net.d/multus.d/multus.kubeconfig
 
 manifests:
   serviceAccount: true
@@ -106,7 +65,3 @@ manifests:
   configMap: true
   daemonSet: true
   customResourceDefinition: true
-
-#tolerations: []
-
-#affinity: {}
