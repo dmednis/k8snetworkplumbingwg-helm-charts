@@ -34,8 +34,9 @@ pod:
         cpu: "100m"
         memory: "50Mi"
 
+
 labels:
-  nodeSelector: 
+  nodeSelector:
     kubernetes.io/arch: amd64
 
 config:

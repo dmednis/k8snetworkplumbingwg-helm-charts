@@ -12,24 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 {{- if or ( gt .Capabilities.KubeVersion.Major "1" ) ( ge .Capabilities.KubeVersion.Minor "16" ) }}
-{{- if .Values.manifests.test_netdevice }}
+{{- if .Values.manifests.test_dpdk }}
 apiVersion: v1
 kind: Pod
 metadata:
-  name: {{ .Release.Name }}-test-netdevice
+  name: {{ .Release.Name }}-test-dpdk
   annotations:
-    k8s.v1.cni.cncf.io/networks: {{ .Values.config.netAttachDef.netdeviceName }} 
+    k8s.v1.cni.cncf.io/networks: {{ .Values.config.netAttachDef.dpdkName }}
 spec:
   containers:
-  - name: appcntr1 
-    image: centos/tools 
+  - name: appcntr1
+    image: centos/tools
     imagePullPolicy: IfNotPresent
     command: [ "/bin/bash", "-c", "--" ]
     args: [ "while true; do sleep 300000; done;" ]
     resources:
       requests:
-        {{ .Values.config.netAttachDef.netdeviceResourceName }}: '1'
+        {{ .Values.config.netAttachDef.dpdkResourceName }}: '1'
       limits:
-        {{ .Values.config.netAttachDef.netdeviceResourceName }}: '1'
+        {{ .Values.config.netAttachDef.dpdkResourceName }}: '1'
 {{- end }}
 {{- end }}
